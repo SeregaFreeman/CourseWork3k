@@ -30,23 +30,28 @@ namespace Shutter.Models
         // Файл картинки
         [Display(Name = "Файл картинки")]
         public string File { get; set; }
+        
         // Внешний ключ Категория
         [Display(Name = "Категория")]
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
-        // ID Пользователя - обычное свойство
+
+        // Внешний ключ Пользователь
+        [Display(Name = "Пользователь")]
         public int? UserId { get; set; }
+        public User User { get; set; }
+        
         // Внешний ключ
         // ID жизненного цикла заявки - обычное свойство
         public int LifecycleId { get; set; }
         // Ссылка на жизненный цикл заявки - Навигационное свойство
         public Lifecycle Lifecycle { get; set; }
+        
     }
     // Перечисление для статуса заявки
     public enum PostStatus
     {
         Posted = 1,
-        Moderated = 2,
-        Approved = 3
+        Approved = 2
     }
 }

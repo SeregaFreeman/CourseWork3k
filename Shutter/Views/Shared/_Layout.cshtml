@@ -6,8 +6,65 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
 </head>
 <body>
+    <!-- В зависимости от роли пользователя устанавливаем определенное меню -->
+    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
+    {
+        <h2>Меню администратора: вы вошли как superadmin</h2>
+        <div class="menu">
+            <ul>
+                
+                <li>
+                    <a class="hide">Заявки</a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
+                        <li>@Html.ActionLink("Все заявки", "PostList", "Post")</li>
+                        <li>@Html.ActionLink("Новая", "Create", "Post")</li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="hide">Пользователи</a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Добавление", "Create", "User")</li>
+                        <li>@Html.ActionLink("Просмотр", "Index", "User")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
+            </ul>
+        </div>
+    }
+    else if (ViewContext.HttpContext.User.IsInRole("Moderator"))
+    {
+        <h2>Меню диспетчера</h2>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a class="hide">Заявки</a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
+                        <li>@Html.ActionLink("Распределить", "Approve", "Post")</li>
+                        <li>@Html.ActionLink("Новая", "Create", "Post")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Пользователи", "Index", "User")</li>
+                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
+            </ul>
+        </div>
+    }
+    else if (ViewContext.HttpContext.User.IsInRole("User"))
+    {
+        <h2>Приветствую, @ViewContext.HttpContext.User.Identity.Name</h2>
+        <div class="menu">
+            <ul>
+                <li>@Html.ActionLink("Подать заявку", "Create", "Post")</li>
+                <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
+                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
+            </ul>
+        </div>
+    }
+
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")

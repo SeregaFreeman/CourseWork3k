@@ -30,7 +30,7 @@ namespace Shutter.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Request");
+                        return RedirectToAction("Index", "Post");
                     }
                 }
                 else
