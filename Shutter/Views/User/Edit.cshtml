@@ -2,9 +2,10 @@
 
 @{
     ViewBag.Title = "Редактирование пользователя";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Редактирование пользователя</h2>
+@section MainContent{
 
 @using (Html.BeginForm())
 {
@@ -54,4 +55,6 @@
 }
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+}
+
 }

@@ -30,22 +30,7 @@ namespace Shutter.Controllers
             return View();
         }
 
-        [HttpPost]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Create(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Users.Add(user);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            SelectList roles = new SelectList(db.Roles, "Id", "Name");
-            ViewBag.Roles = roles;
-
-            return View(user);
-        }
+        
 
         [HttpGet]
         [Authorize(Roles = "Admin")]

@@ -1,12 +1,17 @@
 ﻿@model IEnumerable<Post>
 @using Shutter.Models
 @{
-    ViewBag.Title = "Список заявок";
+    ViewBag.Title = "Список постов";
     int i = 0;
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<h2>Список заявок</h2>
-<p>Всего нераспределенных заявок: @(Model.Count<Post>())</p>
+@section MainContent{
+<div class="main-content">
+<h2>Список постов</h2>
+<p>Всего непроверенных постов: @(Model.Count<Post>())</p>
 <table>
 
     @foreach (var item in Model)
@@ -17,11 +22,11 @@
             <td>
                 @if (item.Status == (int)PostStatus.Posted)
                 {
-                    <img src="../../Content/pictures/status1.png" title="Заявка открыта" class="tdImage" />
+                    <img src="../../Content/pictures/status1.png" title="пост добавлен" class="tdImage" />
                 }
                 else if (item.Status == (int)PostStatus.Approved)
                 {
-                    <img src="../../Content/pictures/status2.png" title="Заявка распределена" class="tdImage" />
+                    <img src="../../Content/pictures/status2.png" title="пост подтвержден" class="tdImage" />
                 }
                 
             </td>
@@ -50,37 +55,20 @@
 
             <td>
                 <div>
-                    <a class="openDialog" data-dialog-id="infoDialog" data-dialog-title="Описание заявки"
+                    <a class="openDialog" data-dialog-id="infoDialog" data-dialog-title="Описание поста"
                        href="/Post/Details/@item.Id">
-                        <img src="../../Content/pictures/info.png" class="tdImage" title="Описание заявки" />
+                        <img src="../../Content/pictures/info.png" class="tdImage" title="Описание поста" />
                     </a>
                 </div>
             </td>
-            <!--
-                @if ((ViewBag.Executors as SelectList).Count() > 0)
-            {
-                using (Html.BeginForm())
-                {
-                    <td>
-                        @Html.Hidden("PostId", item.Id)
-                        @Html.DropDownList("executorId", ViewBag.Executors as SelectList)
-                    </td>
-                    <td>
-                        <input type="submit" value="Назначить" />
-                    </td>
-                }
-            }
-            -->
-            else
-            {
-                <td>
-                    В БД отсутствуют исполнители
-                </td>
-            }
-        </tr>
+            
+           </tr>
     }
 </table>
+</div>
+
 @Styles.Render("~/Content/themes/base/css")
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryui")
 }
+    }

@@ -11,6 +11,9 @@ namespace Shutter.Controllers
     [AllowAnonymous]
     public class AccountController : Controller
     {
+
+        private ShutterContext db = new ShutterContext();
+
         public ActionResult Login()
         {
             return View();
@@ -44,7 +47,7 @@ namespace Shutter.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         private bool ValidateUser(string login, string password)
@@ -70,6 +73,23 @@ namespace Shutter.Controllers
                 }
             }
             return isValid;
+        }
+
+
+        [HttpPost]
+        public ActionResult Register(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Users.Add(user);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            SelectList roles = new SelectList(db.Roles, "Id", "Name");
+            ViewBag.Roles = roles;
+
+            return View(user);
         }
     }
 }

@@ -6,64 +6,79 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/js")
 
 </head>
 <body>
-    <!-- В зависимости от роли пользователя устанавливаем определенное меню -->
-    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
-    {
-        <h2>Меню администратора: вы вошли как superadmin</h2>
-        <div class="menu">
-            <ul>
-                
-                <li>
-                    <a class="hide">Заявки</a>
-                    <ul class="submenu">
-                        <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
-                        <li>@Html.ActionLink("Все заявки", "PostList", "Post")</li>
-                        <li>@Html.ActionLink("Новая", "Create", "Post")</li>
+    
+    <header>
+        <nav class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute;">
+            <div class="container">
+                <div class="navbar-header ">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main-collapse">
+                        <img src="images/nav-icon.png" title="drop-down-menu">
+                    </button>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
+                    <ul class="nav navbar-nav">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li class="active">
+                            <a id="sTop" class="subNavBtn active">@Html.ActionLink("Home", "Index", "Home")</a><!--статичная страница-->
+                        </li>
+                        <li class="not-active">
+                            <a class="subNavBtn">@Html.ActionLink("Profile", "Index", "User")</a><!--User Index-->
+                        </li>
+                        <li class="not-active">
+                            <a id="s2" class="subNavBtn" href="#">Search</a><!---->
+                        </li>
+                        <li class="not-active">
+                            @Html.ActionLink("Log In", "Login", "Account")<!--Регистрация/Вход, если вошел, то меняется на выход-->
+                        </li>
+                        <li class="not-active">
+                            @Html.ActionLink("About", "About", "Home")<!--статичная страница-->
+                        </li>
+                        <li class="not-active">
+                            @Html.ActionLink("Contact", "Contact", "Home")<!--статичная страница-->
+                        </li>
                     </ul>
-                </li>
-                <li>
-                    <a class="hide">Пользователи</a>
-                    <ul class="submenu">
-                        <li>@Html.ActionLink("Добавление", "Create", "User")</li>
-                        <li>@Html.ActionLink("Просмотр", "Index", "User")</li>
-                    </ul>
-                </li>
-                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
-            </ul>
-        </div>
-    }
-    else if (ViewContext.HttpContext.User.IsInRole("Moderator"))
-    {
-        <h2>Меню диспетчера</h2>
-        <div class="menu">
-            <ul>
-                <li>
-                    <a class="hide">Заявки</a>
-                    <ul class="submenu">
-                        <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
-                        <li>@Html.ActionLink("Распределить", "Approve", "Post")</li>
-                        <li>@Html.ActionLink("Новая", "Create", "Post")</li>
-                    </ul>
-                </li>
-                <li>@Html.ActionLink("Пользователи", "Index", "User")</li>
-                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
-            </ul>
-        </div>
-    }
-    else if (ViewContext.HttpContext.User.IsInRole("User"))
-    {
-        <h2>Приветствую, @ViewContext.HttpContext.User.Identity.Name</h2>
-        <div class="menu">
-            <ul>
-                <li>@Html.ActionLink("Подать заявку", "Create", "Post")</li>
-                <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
-                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
-            </ul>
-        </div>
-    }
+                </div>
+                <!-- /.navbar-collapse -->
+                <a id="s4" class="right-msg subNavBtn msg-icon" href="#"><span> </span></a>
+                <div class="clearfix"> </div>
+            </div>
+            <!-- /.container -->
+        </nav>
+    </header>
+
+@if (IsSectionDefined("MainContent"))
+{
+    @RenderSection("MainContent")
+}
+else
+{
+    <div class="main-content">
+
+    </div>
+}
+
+    <footer>
+        <div class="container">
+                    <div class="copy">
+                        <p>&copy; 2015 Template by Sergey Pogorelov (with help of w3layouts)</p>
+                    </div>
+                    <div class="social">
+                        <ul>
+                            <li class="facebook"><a href="#"><span> </span></a></li>
+                            <li class="twitter"><a href="#"><span> </span></a></li>
+                            <li class="rss"><a href="#"><span> </span></a></li>
+                            <li class="google"><a href="#"><span> </span></a></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>      
+    </footer>
 
     @RenderBody()
 

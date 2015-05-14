@@ -2,12 +2,15 @@
 @using Shutter.Models
 
 @{
-    ViewBag.Title = "Список заявок";
+    ViewBag.Title = "Список постов";
     int i = 0; //счетчик
 }
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
-<h2>Список заявок</h2>
-<p>Всего заявок: @(Model.Count<Post>())</p>
+@section MainContent{
+<p>Всего постов: @(Model.Count<Post>())</p>
 <table>
 
     @foreach (var item in Model)
@@ -18,12 +21,12 @@
             <td>
                 @if (item.Status == (int)PostStatus.Posted)
                 {
-                    <img src="../../Content/pictures/status1.png" title="Заявка открыта" class="tdImage" />
+                    <img src="../../Content/pictures/status1.png" title="пост открыта" class="tdImage" />
                 }                
                 
                 else if (item.Status == (int)PostStatus.Approved)
                 {
-                    <img src="../../Content/pictures/status5.png" title="Заявка закрыта" class="tdImage" />
+                    <img src="../../Content/pictures/status5.png" title="пост закрыта" class="tdImage" />
                 }
             </td>
             
@@ -70,7 +73,4 @@
     }
 
 </table>
-@Styles.Render("~/Content/themes/base/css")
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryui")
 }

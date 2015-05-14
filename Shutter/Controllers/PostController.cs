@@ -20,7 +20,7 @@ namespace Shutter.Controllers
 
             var posts = db.Posts.Where(r => r.UserId == user.Id) //получаем посты для текущего пользователя
                                     .Include(r => r.Category)  // добавляем категории
-                                    .Include(r => r.Lifecycle)  // добавляем жизненный цикл заявок
+                                    .Include(r => r.Lifecycle)  // добавляем жизненный цикл постов
                                     .Include(r => r.User)         // добавляем данные о пользователях
                                     .OrderByDescending(r => r.Lifecycle.Posted); // упорядочиваем по дате по убыванию   
 
