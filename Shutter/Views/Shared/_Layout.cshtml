@@ -6,8 +6,64 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/js")
+
 </head>
 <body>
+
+    <header>
+        <nav>
+            <ul class="navigation">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                <li class="subnav not-active">
+                    @Html.ActionLink("Home", "Index", "Home")<!--статичная страница-->
+                </li>
+                <li class="subnav not-active">
+                    @Html.ActionLink("Profile", "Index", "User")<!--User Index-->
+                </li>
+                <li class="subnav not-active">
+                    <a class="subNavBtn" href="#">Search<!---->
+                </li>
+                <li class="subnav not-active">
+                    @Html.ActionLink("Log In", "Login", "Account")<!--Регистрация/Вход, если вошел, то меняется на выход-->
+                </li>
+                <li class="subnav not-active">
+                    @Html.ActionLink("About", "About", "Home")<!--статичная страница-->
+                </li>
+                <li class="subnav not-active">
+                    @Html.ActionLink("Contact", "Contact", "Home")<!--статичная страница-->
+                </li>
+             </ul>
+        </nav>
+    </header>
+
+@if (IsSectionDefined("MainContent"))
+{
+    @RenderSection("MainContent")
+}
+else
+{
+    <div class="main-content">
+
+    </div>
+}
+
+    <footer>
+        <div class="container">
+                    <div class="copy">
+                        <p>&copy; 2015 Template by Sergey Pogorelov (with help of w3layouts)</p>
+                    </div>
+                    <div class="social">
+                        <ul>
+                            <li class="facebook"><a href="#"><span> </span></a></li>
+                            <li class="twitter"><a href="#"><span> </span></a></li>
+                            <li class="rss"><a href="#"><span> </span></a></li>
+                            <li class="google"><a href="#"><span> </span></a></li>
+                        </ul>
+                    </div>
+          </div>      
+    </footer>
+
     @RenderBody()
 
     @Scripts.Render("~/bundles/jquery")

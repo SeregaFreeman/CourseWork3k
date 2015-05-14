@@ -12,10 +12,19 @@ namespace Shutter.Controllers
     public class PostController : Controller
     {
         ShutterContext db = new ShutterContext();
-        
+
         public ActionResult Index()
         {
-            return View();
+            // получаем текущего пользователя
+            User user = db.Users.Where(m => m.Login == HttpContext.User.Identity.Name).FirstOrDefault();
+
+            var posts = db.Posts.Where(r => r.UserId == user.Id) //получаем посты для текущего пользователя
+                                    .Include(r => r.Category)  // добавляем категории
+                                    .Include(r => r.Lifecycle)  // добавляем жизненный цикл постов
+                                    .Include(r => r.User)         // добавляем данные о пользователях
+                                    .OrderByDescending(r => r.Lifecycle.Posted); // упорядочиваем по дате по убыванию   
+
+            return View(posts);
         }
 
         [HttpGet]
@@ -33,7 +42,7 @@ namespace Shutter.Controllers
 
         // Создание новой заявки
         [HttpPost]
-        public ActionResult Create(Post post, HttpPostedFileBase error)
+        public ActionResult Create(Post post, HttpPostedFileBase picture)
         {
             // получаем текущего пользователя
             User user = db.Users.Where(m => m.Login == HttpContext.User.Identity.Name).FirstOrDefault();
@@ -59,13 +68,13 @@ namespace Shutter.Controllers
                 post.UserId = user.Id;
 
                 // если получен файл
-                if (error != null)
+                if (picture != null)
                 {
                     // Получаем расширение
-                    string ext = error.FileName.Substring(error.FileName.LastIndexOf('.'));
+                    string ext = picture.FileName.Substring(picture.FileName.LastIndexOf('.'));
                     // сохраняем файл по определенному пути на сервере
                     string path = current.ToString("dd/MM/yyyy H:mm:ss").Replace(":", "_").Replace("/", ".") + ext;
-                    error.SaveAs(Server.MapPath("~/Files/" + path));
+                    picture.SaveAs(Server.MapPath("~/Files/" + path));
                     post.File = path;
                 }
                 //Добавляем заявку
@@ -77,5 +86,87 @@ namespace Shutter.Controllers
             return View(post);
         }
 
+        // Удаление заявки
+        public ActionResult Delete(int id)
+        {
+            Post post = db.Posts.Find(id);
+            // получаем текущего пользователя
+            User user = db.Users.Where(m => m.Login == HttpContext.User.Identity.Name).First();
+            if (post != null && post.UserId == user.Id)
+            {
+                Lifecycle lifecycle = db.Lifecycles.Find(post.LifecycleId);
+                db.Lifecycles.Remove(lifecycle);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+
+        // загружаем файл
+        public ActionResult Upload(int id)
+        {
+            Post r = db.Posts.Find(id);
+            if (r != null)
+            {
+                // Формируем имя для картинки
+                Random rnd = new Random();
+                int imageName = rnd.Next();
+
+                string filename = Server.MapPath("~/Uploads/" + imageName + r.File);
+                string contentType = "image/jpeg";
+
+                string ext = filename.Substring(filename.LastIndexOf('.'));
+                switch (ext)
+                {
+                    case "png":
+                        contentType = "image/png";
+                        break;
+                    case "tiff":
+                        contentType = "image/tiff";
+                        break;
+                    case "jpg":
+                        contentType = "image/jpeg";
+                        break;
+                }
+                return File(filename, contentType, filename);
+            }
+            return Content("Файл не найден");
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Moderator")]
+        public ActionResult Approve()
+        {
+            var posts = db.Posts.Include(r => r.User)
+                                    .Include(r => r.Lifecycle)
+                                    .Where(r => r.Status != (int)PostStatus.Approved);
+            
+            return View(posts);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Moderator")]
+        public ActionResult Approve(int? postId)
+        {
+            if (postId == null)
+            {
+                return RedirectToAction("Approve");
+            }
+
+            Post post = db.Posts.Find(postId);
+            if (post == null)
+            {
+                return RedirectToAction("Approve");
+            }
+            
+            post.Status = (int)PostStatus.Approved;
+            Lifecycle lifecycle = db.Lifecycles.Find(post.LifecycleId);
+            lifecycle.Approved = DateTime.Now;
+            db.Entry(lifecycle).State = EntityState.Modified;
+
+            db.Entry(post).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("Approve");
+        }
     }
 }

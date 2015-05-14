@@ -4,54 +4,109 @@
     ViewBag.Title = "Список пользователей";
 }
 
-<h2>Список пользователей</h2>
-
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        @if (HttpContext.Current.User.IsInRole("Admin"))
-        {
-            <th>
-                @Html.DisplayNameFor(model => model.Login)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-        }
-
-        <th>
-            @Html.DisplayNameFor(model => model.RoleId)
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
+@section MainContent{
+<div class="main-content">
+    <!-- В зависимости от роли пользователя устанавливаем определенное меню -->
+    @if (ViewContext.HttpContext.User.IsInRole("Admin"))
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            @if (HttpContext.Current.User.IsInRole("Admin"))
+        <h2>Меню администратора: вы вошли как superadmin</h2>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a class="hide">Заявки</a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
+                        <li>@Html.ActionLink("Все заявки", "PostList", "Post")</li>
+                        <li>@Html.ActionLink("Новая", "Create", "Post")</li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="hide">Пользователи</a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Добавление", "Create", "User")</li>
+                        <li>@Html.ActionLink("Просмотр", "Index", "User")</li>
+                    </ul>
+                </li>
+                
+            </ul>
+
+        </div>
+
+        <h2>Список пользователей</h2>
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Login)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.RoleId)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
             {
-                <td>
-                    @Html.DisplayFor(modelItem => item.Login)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Role.Name)
-                </td>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Login)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
             }
-            
-            @if (HttpContext.Current.User.IsInRole("Admin"))
-            {
-                <td>
-                    @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
-                </td>
-            }
-        </tr>
+        </table>
     }
-</table>
+
+    else if (ViewContext.HttpContext.User.IsInRole("Moderator"))
+    {
+        <h2>Меню диспетчера</h2>
+        <div class="menu">
+            <ul>
+                <li>
+                    <a class="hide">Заявки</a>
+                    <ul class="submenu">
+                        <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
+                        <li>@Html.ActionLink("Распределить", "Approve", "Post")</li>
+                        <li>@Html.ActionLink("Новая", "Create", "Post")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Пользователи", "Index", "User")</li>
+                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
+            </ul>
+        </div>
+    }
+
+    else if (ViewContext.HttpContext.User.IsInRole("User"))
+    {
+        <h2>Приветствую, @ViewContext.HttpContext.User.Identity.Name</h2>
+        <div class="menu">
+            <ul>
+                <li>@Html.ActionLink("Подать заявку", "Create", "Post")</li>
+                <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
+                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
+            </ul>
+        </div>
+
+    }
+</div>    
+}

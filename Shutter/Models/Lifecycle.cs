@@ -14,10 +14,6 @@ namespace Shutter.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy H:mm:ss}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
         public DateTime Posted { get; set; }
-        // Дата модерации
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy H:mm:ss}", ApplyFormatInEditMode = true)]
-        [DataType(DataType.Date)]
-        public DateTime Moderated { get; set; }
         // Дата подтверждения
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy H:mm:ss}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Date)]
