@@ -41,6 +41,6 @@ e:\OneDrive\Programming\C#\Shutter\Shutter\bin\ru\System.Web.Razor.resources.dll
 e:\OneDrive\Programming\C#\Shutter\Shutter\bin\ru\System.Web.WebPages.resources.dll
 e:\OneDrive\Programming\C#\Shutter\Shutter\bin\ru\System.Web.WebPages.Deployment.resources.dll
 e:\OneDrive\Programming\C#\Shutter\Shutter\bin\ru\System.Web.WebPages.Razor.resources.dll
+e:\OneDrive\Programming\C#\Shutter\Shutter\obj\Debug\Shutter.csprojResolveAssemblyReference.cache
 e:\OneDrive\Programming\C#\Shutter\Shutter\obj\Debug\Shutter.dll
 e:\OneDrive\Programming\C#\Shutter\Shutter\obj\Debug\Shutter.pdb
-E:\OneDrive\Programming\C#\Shutter\Shutter\obj\Debug\Shutter.csprojResolveAssemblyReference.cache

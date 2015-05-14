@@ -19,20 +19,22 @@ namespace Shutter
                         "~/Scripts/jquery.validate*"));
 
             bundles.Add(new ScriptBundle ("~/Scripts/js").Include(
-                    "~/Scripts/bootstrap.min.js",
-                    "~/Scripts/easing.js",
-                    "~/Scripts/jquery.min",
-                    "~/Scripts/jquery.smint.js",
-                    "~/Scripts/jquery.wmuSlider.js"
+                "~/Scripts/jquery.smint.js",
+                "~/Scripts/jquery.wmuSlider.js",    
+                "~/Scripts/bootstrap.min.js",
+                "~/Scripts/easing.js"    
                 ));
             // Используйте версию Modernizr для разработчиков, чтобы учиться работать. Когда вы будете готовы перейти к работе,
             // используйте средство построения на сайте http://modernizr.com, чтобы выбрать только нужные тесты.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/css/Style.css",
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/css/bootstrap.min.css",
                 "~/Content/css/bootstrap.css",
-                "~/Content/css/bootstrap.min.css"));
+                //"~/Content/css/Style.css",
+                "~/Content/css/FuckingStyle.css"
+                ));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",
