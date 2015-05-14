@@ -1,0 +1,118 @@
+﻿h4, h5, h6,
+h1, h2, h3 {margin-top: 0;}
+ul, ol {margin: 0;}
+p {margin: 0;}
+
+body{
+   font-family: 'Lato', sans-serif;
+    font-size: 100%;
+    background-color: #FFF;
+    background:url(../images/bg.png);
+}
+
+body a{
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+
+header{
+	min-height:80px;
+    width: 100%;
+    margin: 0px; 
+    background-color: #ffb500;
+    position: relative;
+}
+
+nav{
+    margin: 0 auto;
+    display: inline-block;
+    min-height: 80px;
+    width: 665px;
+    position: relative;
+}
+
+.navigation{
+    display: inline-block;
+    margin: 0 auto;
+    height: 80px;
+    padding: 0;
+}
+
+.subnav{
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  width: 110px;
+  text-transform: uppercase;
+  text-align: center;
+  vertical-align: central;
+  font-size: 14pt;
+}
+
+.main-content{
+    display: block;
+    width: 100%;
+    min-height: 600px;
+}
+
+.logo{
+	
+}
+
+footer{
+	background:#35353f;
+	padding:2em 0;
+}
+
+.social {
+	float: right;
+	margin-top: 5px;
+}
+.social ul li:first-child, ol li:first-child {
+	margin-top: 0px;
+	margin-left: 0;
+}
+.social li {
+	background: none;
+	display: inline-block;
+}
+li.facebook a span {
+	height: 40px;
+	width: 40px;
+	display: block;
+	background: url(../images/img-sprite.png)no-repeat -14px -296px;
+}
+li.facebook a span:hover {
+	background: url(../images/img-sprite.png)no-repeat -11px -341px;
+}
+li.twitter a span {
+	height: 40px;
+	width: 40px;
+	display: block;
+	background: url(../images/img-sprite.png)no-repeat -64px -296px;
+}
+li.twitter a span:hover {
+	background: url(../images/img-sprite.png)no-repeat -64px -341px;
+}
+li.rss a span {
+	height: 40px;
+	width: 40px;
+	display: block;
+	background: url(../images/img-sprite.png)no-repeat -114px -296px;
+}
+li.rss a span:hover {
+	background: url(../images/img-sprite.png)no-repeat -117px -341px;
+}
+li.google a span {
+	height: 40px;
+	width: 40px;
+	display: block;
+	background: url(../images/img-sprite.png)no-repeat -175px -313px;
+}
+li.google a span:hover {
+	background: url(../images/img-sprite.png)no-repeat -173px -358px;
+}
