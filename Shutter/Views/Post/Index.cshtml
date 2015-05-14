@@ -10,6 +10,7 @@
 }
 
 @section MainContent{
+
 <p>Всего постов: @(Model.Count<Post>())</p>
 <table>
 
@@ -21,12 +22,12 @@
             <td>
                 @if (item.Status == (int)PostStatus.Posted)
                 {
-                    <img src="../../Content/pictures/status1.png" title="пост открыта" class="tdImage" />
+                    <img src="../../Content/pictures/status1.png" title="пост открыт" class="tdImage" />
                 }                
                 
                 else if (item.Status == (int)PostStatus.Approved)
                 {
-                    <img src="../../Content/pictures/status5.png" title="пост закрыта" class="tdImage" />
+                    <img src="../../Content/pictures/status5.png" title="пост закрыт" class="tdImage" />
                 }
             </td>
             
@@ -40,6 +41,7 @@
                     <img src="../../Content/pictures/filen.png" alt="без файла изображения" class="tdImage" />
                 }
             </td>
+
             <td>
                 @Html.DisplayFor(modelItem => item.Lifecycle.Posted)
 
@@ -57,8 +59,9 @@
                     </a>
                 </div>
             </td>
-            <td>
-            <div>
+            
+            <td>                
+                <div>
                     <a class="PostedDialog" data-dialog-id="lifecycleDialog" data-dialog-title="Жизненный цикл заявки"
                        href="Post/Lifecycle/@item.LifecycleId">
                         <img src="../../Content/pictures/lifecycle.png" class="tdImage" title="Жизненный цикл заявки" />
@@ -66,6 +69,7 @@
                 </div>
 
             </td>
+
             <td>
                 @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
             </td>

@@ -102,12 +102,16 @@ namespace Shutter.Controllers
         }
 
         // загружаем файл
-        public ActionResult Download(int id)
+        public ActionResult Upload(int id)
         {
             Post r = db.Posts.Find(id);
             if (r != null)
             {
-                string filename = Server.MapPath("~/Files/" + r.File);
+                // Формируем имя для картинки
+                Random rnd = new Random();
+                int imageName = rnd.Next();
+
+                string filename = Server.MapPath("~/Uploads/" + imageName + r.File);
                 string contentType = "image/jpeg";
 
                 string ext = filename.Substring(filename.LastIndexOf('.'));
@@ -125,7 +129,6 @@ namespace Shutter.Controllers
                 }
                 return File(filename, contentType, filename);
             }
-
             return Content("Файл не найден");
         }
 

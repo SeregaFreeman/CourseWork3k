@@ -10,45 +10,30 @@
 
 </head>
 <body>
-    
-    <header>
-        <nav class="subMenu navbar-custom navbar-scroll-top smint" role="navigation" style="position: absolute;">
-            <div class="container">
-                <div class="navbar-header ">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main-collapse">
-                        <img src="images/nav-icon.png" title="drop-down-menu">
-                    </button>
-                </div>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
-                    <ul class="nav navbar-nav">
+    <header>
+        <nav>
+            <ul class="navigation">
                         <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                        <li class="active">
-                            <a id="sTop" class="subNavBtn active">@Html.ActionLink("Home", "Index", "Home")</a><!--статичная страница-->
-                        </li>
-                        <li class="not-active">
-                            <a class="subNavBtn">@Html.ActionLink("Profile", "Index", "User")</a><!--User Index-->
-                        </li>
-                        <li class="not-active">
-                            <a id="s2" class="subNavBtn" href="#">Search</a><!---->
-                        </li>
-                        <li class="not-active">
-                            @Html.ActionLink("Log In", "Login", "Account")<!--Регистрация/Вход, если вошел, то меняется на выход-->
-                        </li>
-                        <li class="not-active">
-                            @Html.ActionLink("About", "About", "Home")<!--статичная страница-->
-                        </li>
-                        <li class="not-active">
-                            @Html.ActionLink("Contact", "Contact", "Home")<!--статичная страница-->
-                        </li>
-                    </ul>
-                </div>
-                <!-- /.navbar-collapse -->
-                <a id="s4" class="right-msg subNavBtn msg-icon" href="#"><span> </span></a>
-                <div class="clearfix"> </div>
-            </div>
-            <!-- /.container -->
+                <li class="subnav not-active">
+                    @Html.ActionLink("Home", "Index", "Home")<!--статичная страница-->
+                </li>
+                <li class="subnav not-active">
+                    @Html.ActionLink("Profile", "Index", "User")<!--User Index-->
+                </li>
+                <li class="subnav not-active">
+                    <a class="subNavBtn" href="#">Search<!---->
+                </li>
+                <li class="subnav not-active">
+                    @Html.ActionLink("Log In", "Login", "Account")<!--Регистрация/Вход, если вошел, то меняется на выход-->
+                </li>
+                <li class="subnav not-active">
+                    @Html.ActionLink("About", "About", "Home")<!--статичная страница-->
+                </li>
+                <li class="subnav not-active">
+                    @Html.ActionLink("Contact", "Contact", "Home")<!--статичная страница-->
+                </li>
+             </ul>
         </nav>
     </header>
 
@@ -76,8 +61,7 @@ else
                             <li class="google"><a href="#"><span> </span></a></li>
                         </ul>
                     </div>
-                    <div class="clearfix"></div>
-                </div>      
+          </div>      
     </footer>
 
     @RenderBody()

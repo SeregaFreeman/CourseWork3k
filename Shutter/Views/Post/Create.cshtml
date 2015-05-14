@@ -2,8 +2,6 @@
 
 @{
     ViewBag.Title = "Создать заявку";
-}
-@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -42,7 +40,9 @@
             @Html.LabelFor(model => model.File)
         </div>
         <div class="editor-field">
-            <input type="file" id="error" name="error" />
+            <form method="post" enctype="multipart/form-data">
+                <input type="file" id="imagefile" name="imagefile" /><br />
+            </form>
         </div>
 
         <div class="editor-label">
@@ -57,9 +57,5 @@
             <input type="submit" value="Сохранить заявку" />
         </p>
     </fieldset>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
     }
+}
