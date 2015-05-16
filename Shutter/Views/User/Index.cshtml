@@ -11,22 +11,22 @@
     {
         <h2>Меню администратора: вы вошли как superadmin</h2>
         <div class="menu">
-            <ul>
+            <ul style = "list-style: none;">
                 <li>
                     <a class="hide">Заявки</a>
                     <ul class="submenu">
                         <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
-                        <li>@Html.ActionLink("Все заявки", "PostList", "Post")</li>
                         <li>@Html.ActionLink("Новая", "Create", "Post")</li>
                     </ul>
                 </li>
                 <li>
                     <a class="hide">Пользователи</a>
                     <ul class="submenu">
-                        <li>@Html.ActionLink("Добавление", "Create", "User")</li>
                         <li>@Html.ActionLink("Просмотр", "Index", "User")</li>
                     </ul>
                 </li>
+
+                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
                 
             </ul>
 
@@ -75,6 +75,8 @@
                 </tr>
             }
         </table>
+
+            
     }
 
     else if (ViewContext.HttpContext.User.IsInRole("Moderator"))

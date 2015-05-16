@@ -2,8 +2,6 @@
 
 @{
     ViewBag.Title = "Создание пользователя";
-}
-@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -45,7 +43,7 @@
             @Html.LabelFor(model => model.RoleId)
         </div>
         <div class="editor-field">
-            @Html.DropDownListFor(model => model.RoleId, ViewBag.Roles as SelectList) <!--убрать-->
+            @Html.DropDownListFor(model => model.RoleId, ViewBag.Roles as SelectList)
             @Html.ValidationMessageFor(model => model.RoleId)
         </div>
 
@@ -54,8 +52,4 @@
         </p>
     </fieldset>
 }
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
 }
-    }

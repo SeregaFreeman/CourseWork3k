@@ -14,6 +14,7 @@ namespace Shutter.Controllers
 
         private ShutterContext db = new ShutterContext();
 
+        //LOGIN action
         public ActionResult Login()
         {
             return View();
@@ -33,16 +34,18 @@ namespace Shutter.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Post");
+                        return RedirectToAction("Index", "User");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Неправильный пароль или логин");
+                    ModelState.AddModelError("", "Incorrect login or password");
                 }
             }
             return View(model);
         }
+
+        //LOG OFF action
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
@@ -50,6 +53,7 @@ namespace Shutter.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        //VALIDATE function
         private bool ValidateUser(string login, string password)
         {
             bool isValid = false;
@@ -75,6 +79,11 @@ namespace Shutter.Controllers
             return isValid;
         }
 
+        //REGISTER action
+        public ActionResult Register()
+        {
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Register(User user)
@@ -83,7 +92,7 @@ namespace Shutter.Controllers
             {
                 db.Users.Add(user);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "User");
             }
 
             SelectList roles = new SelectList(db.Roles, "Id", "Name");

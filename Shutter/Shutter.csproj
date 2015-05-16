@@ -156,7 +156,8 @@
     </Content>
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\FuckingStyle.css" />
+    <Content Include="Content\css\gallerie-effects.css" />
+    <Content Include="Content\css\gallerie.css" />
     <Content Include="Content\css\Style.css" />
     <Content Include="Content\images\bg.png" />
     <Content Include="Content\images\btn.png" />
@@ -164,6 +165,7 @@
     <Content Include="Content\images\hand-hover.png" />
     <Content Include="Content\images\hand.png" />
     <Content Include="Content\images\img-sprite.png" />
+    <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo_small.png" />
     <Content Include="Content\images\nav-icon.png" />
@@ -187,6 +189,7 @@
     <Content Include="Content\images\signup.png" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\easing.js" />
+    <Content Include="Scripts\jquery.gallerie.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.smint.js" />
     <Content Include="Scripts\jquery.wmuSlider.js" />

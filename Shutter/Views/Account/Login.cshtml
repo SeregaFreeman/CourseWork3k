@@ -4,46 +4,38 @@
 }
 
 @section MainContent{
-    <script src="~/Scripts/jquery-1.7.1.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<div class="main-content">
+    
+<div class="contact-form">
 
-    <h2>Вход в систему</h2>
-    <p>Введите свой логин и пароль для входа в систему</p>
+    <h3 class="m_3">Registered user? Enter your login and password.</h3>
 
     @using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)
 
         <fieldset>
-            <legend>Войти в систему</legend>
+            @Html.EditorFor(model => model.UserName, "login", new { @class = "textbox", @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Login';}" })
+            @Html.ValidationMessageFor(model => model.UserName)
+            
+            @Html.EditorFor(model => model.Password, "password", new { @class = "textbox", @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Password';}" })
+            @Html.ValidationMessageFor(model => model.Password)
+            
+            <input type="submit" value="Log In">
+            <!--
+            @Html.LabelFor(model => model.RememberMe)
+            @Html.EditorFor(model => model.RememberMe)
+            -->
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.UserName)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.UserName)
-                @Html.ValidationMessageFor(model => model.UserName)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Password)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(model => model.RememberMe)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.RememberMe)
-            </div>
-
-            <p>
-                <input type="submit" value="Войти" />
-            </p>
         </fieldset>
     }
+</div>
+    
+        <div class="signup s3" id="signup">
+            <div class="container">
+                <h3 class="m_3">Are you Interested ? <br> </h3>
+                @Html.ActionLink("Sign up now", "Register", "Account", new object { }, new {@style = "font-size: 20pt; color: #FEB400"});
+            </div>
+        </div>
+</div>
 }

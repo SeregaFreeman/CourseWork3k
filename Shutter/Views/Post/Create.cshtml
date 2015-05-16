@@ -6,7 +6,7 @@
 }
 
 @section MainContent{
-
+    <div class="main-content">
 @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary(true)
@@ -40,9 +40,7 @@
             @Html.LabelFor(model => model.File)
         </div>
         <div class="editor-field">
-            <form method="post" enctype="multipart/form-data">
-                <input type="file" id="imagefile" name="imagefile" /><br />
-            </form>
+            <input type="file" name="picture" />
         </div>
 
         <div class="editor-label">
@@ -58,4 +56,5 @@
         </p>
     </fieldset>
     }
+        </div>
 }

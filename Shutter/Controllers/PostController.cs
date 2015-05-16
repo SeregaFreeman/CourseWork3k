@@ -40,7 +40,7 @@ namespace Shutter.Controllers
             return RedirectToAction("LogOff", "Account");
         }
 
-        // Создание новой заявки
+        // Создание нового поста
         [HttpPost]
         public ActionResult Create(Post post, HttpPostedFileBase picture)
         {
@@ -74,10 +74,10 @@ namespace Shutter.Controllers
                     string ext = picture.FileName.Substring(picture.FileName.LastIndexOf('.'));
                     // сохраняем файл по определенному пути на сервере
                     string path = current.ToString("dd/MM/yyyy H:mm:ss").Replace(":", "_").Replace("/", ".") + ext;
-                    picture.SaveAs(Server.MapPath("~/Files/" + path));
+                    picture.SaveAs(Server.MapPath("~/Uploads/" + path));
                     post.File = path;
                 }
-                //Добавляем заявку
+                //Добавляем пост в БД
                 db.Posts.Add(post);
                 db.SaveChanges();
 
@@ -86,7 +86,7 @@ namespace Shutter.Controllers
             return View(post);
         }
 
-        // Удаление заявки
+        // Удаление поста
         public ActionResult Delete(int id)
         {
             Post post = db.Posts.Find(id);
@@ -101,8 +101,8 @@ namespace Shutter.Controllers
             return RedirectToAction("Index");
         }
 
-        // загружаем файл
-        public ActionResult Upload(int id)
+        // загружаем файл TBD
+/*        public ActionResult Upload(int id)
         {
             Post r = db.Posts.Find(id);
             if (r != null)
@@ -130,8 +130,9 @@ namespace Shutter.Controllers
                 return File(filename, contentType, filename);
             }
             return Content("Файл не найден");
-        }
+        }*/
 
+        // действия для модератора
         [HttpGet]
         [Authorize(Roles = "Moderator")]
         public ActionResult Approve()

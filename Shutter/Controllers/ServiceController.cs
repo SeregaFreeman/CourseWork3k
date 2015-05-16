@@ -32,6 +32,7 @@ namespace Shutter.Controllers
             ViewBag.Categories = db.Categories;
             return View(cat);
         }
+
         // Удаление категории по id
         public ActionResult DeleteCategory(int id)
         {

@@ -30,8 +30,6 @@ namespace Shutter.Controllers
             return View();
         }
 
-        
-
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)

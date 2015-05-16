@@ -7,14 +7,15 @@
 
 @section MainContent{
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
+<div class="main-content">
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Пользователь</legend>
+        <fieldset>
+            <legend>Пользователь</legend>
 
-        @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -51,10 +52,8 @@
         <p>
             <input type="submit" value="Сохранить" />
         </p>
-    </fieldset>
-}
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
 
+    </fieldset>
+    }
+</div>
 }

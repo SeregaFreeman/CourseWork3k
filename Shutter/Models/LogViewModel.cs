@@ -9,16 +9,16 @@ namespace Shutter.Models
     public class LogViewModel
     {
         [Required]
-        [Display(Name = "Логин")]
+        [Display(Name = "Login")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Пароль")]
+        [Display(Name = "Password")]
         public string Password { get; set; }
 
         [Required]
-        [Display(Name = "Запомнить?")]
+        [Display(Name = "Remember?")]
         public bool RememberMe { get; set; }
     }
 }
