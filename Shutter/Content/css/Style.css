@@ -37,6 +37,11 @@ body a {
     text-align: center;
     padding: 2em 0 8em;
 }
+
+.menu{
+    display: block;
+    min-height: 80px;
+}
 /**** Slider *****/
 
 .slider_container {
@@ -54,6 +59,7 @@ body a {
     min-height: 480px;
     background: url(../images/bg.png);
     margin: 0 auto;
+    padding: 40px 120px 0 120px;
 }
 /**** Slider *****/
 
@@ -810,7 +816,7 @@ li.google a span:hover {
         width: 85%;
     }
     .wmuSliderPagination {
-        left: 50.1em;
+        left: 41.5em;
     }
     .b-animate span {
         padding-top: 0.3em;

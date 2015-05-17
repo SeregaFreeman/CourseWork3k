@@ -9,30 +9,18 @@
     <!-- В зависимости от роли пользователя устанавливаем определенное меню -->
     @if (ViewContext.HttpContext.User.IsInRole("Admin"))
     {
-        <h2>Меню администратора: вы вошли как superadmin</h2>
+        <h2 style="color: gray; padding-left: 10px;">Меню администратора: вы вошли как superadmin</h2>
         <div class="menu">
-            <ul style = "list-style: none;">
-                <li>
-                    <a class="hide">посты</a>
-                    <ul class="submenu">
-                        <li>@Html.ActionLink("Мои посты", "Index", "Post")</li>
-                        <li>@Html.ActionLink("Новая", "Create", "Post")</li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="hide">Пользователи</a>
-                    <ul class="submenu">
-                        <li>@Html.ActionLink("Просмотр", "Index", "User")</li>
-                    </ul>
-                </li>
-
-                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
-                
+            <ul class="nav navbar-nav">
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Мои посты", "Index", "Post", new object { }, new { @style = "color: #ffb500" })</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Новая", "Create", "Post", new object { }, new { @style = "color: #ffb500" })</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Просмотр", "Index", "User", new object { }, new { @style = "color: #ffb500" })</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Выйти", "LogOff", "Account", new object { }, new { @style = "color: #ffb500" })</li>
             </ul>
-
         </div>
 
-        <h2>Список пользователей</h2>
+        <div>
+            <h2 style="color: gray; padding-left: 10px;">Список пользователей</h2>
         <table>
             <tr>
                 <th>
@@ -69,43 +57,42 @@
                         @Html.DisplayFor(modelItem => item.Role.Name)
                     </td>
                     <td>
-                        @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-                        @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+                        @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }, new { @style = "color: #ffb500" })
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.Id }, new { @style = "color: #ffb500" })
                     </td>
                 </tr>
             }
         </table>
-
-            
+            </div>
     }
 
     else if (ViewContext.HttpContext.User.IsInRole("Moderator"))
     {
-        <h2>Меню диспетчера</h2>
+        <h2 style="color: gray; padding-left: 10px;">Меню диспетчера</h2>
         <div class="menu">
-            <ul>
-                <li>
+            <ul class="nav navbar-nav">
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
                     <a class="hide">посты</a>
                     <ul class="submenu">
-                        <li>@Html.ActionLink("Мои посты", "Index", "Post")</li>
-                        <li>@Html.ActionLink("Распределить", "Approve", "Post")</li>
-                        <li>@Html.ActionLink("Новая", "Create", "Post")</li>
+                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Мои посты", "Index", "Post", new object { }, new { @style = "color: #ffb500" })</li>
+                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Распределить", "Approve", "Post", new object { }, new { @style = "color: #ffb500" })</li>
+                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Новая", "Create", "Post", new object { }, new { @style = "color: #ffb500" })</li>
                     </ul>
                 </li>
-                <li>@Html.ActionLink("Пользователи", "Index", "User")</li>
-                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Пользователи", "Index", "User", new object { }, new { @style = "color: #ffb500" })</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Выйти", "LogOff", "Account", new object { }, new { @style = "color: #ffb500" })</li>
             </ul>
         </div>
     }
 
     else if (ViewContext.HttpContext.User.IsInRole("User"))
     {
-        <h2>Приветствую, @ViewContext.HttpContext.User.Identity.Name</h2>
+        <h2 style="color: gray; padding-left: 10px;">Приветствую, @ViewContext.HttpContext.User.Identity.Name</h2>
         <div class="menu">
-            <ul>
-                <li>@Html.ActionLink("Добавить пост", "Create", "Post")</li>
-                <li>@Html.ActionLink("Мои посты", "Index", "Post")</li>
-                <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
+            <ul class="nav navbar-nav">
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Добавить пост", "Create", "Post", new object { }, new {@style = "color: #ffb500" })</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Мои посты", "Index", "Post", new object { }, new { @style = "color: #ffb500" })</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Выйти", "LogOff", "Account", new object { }, new { @style = "color: #ffb500" })</li>
             </ul>
         </div>
 

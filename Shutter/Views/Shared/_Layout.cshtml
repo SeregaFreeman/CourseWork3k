@@ -36,36 +36,36 @@
                 <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
                     <ul class="nav navbar-nav">
                         <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                        <li class="active">
+                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
                             @Html.ActionLink("Home", "Index", "Home", new object { }, new { @class = "subNavBtn active", @id = "sTop" })
                         </li>
                         
-                            @if (ViewContext.HttpContext.User.IsInRole("Admin")||ViewContext.HttpContext.User.IsInRole("Moderator") || ViewContext.HttpContext.User.IsInRole("User"))
+                            @if (ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Moderator") || ViewContext.HttpContext.User.IsInRole("User"))
                             {
-                                <li class="page-scroll">
-                                    @Html.ActionLink("Profile", "Index", "User", new object { }, new { @class = "subNavBtn", @id="s1"})
+                                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
+                                    @Html.ActionLink("Profile", "Index", "User", new object { }, new { @class = "subNavBtn", @id = "s1" })
                                 </li>
                             }
                                 
-                        <li class="page-scroll">
+                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
                             <a id="s2" class="subNavBtn" href="#">Search</a>
                         </li>
                         @if (!(ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Moderator") || ViewContext.HttpContext.User.IsInRole("User")))
                         {
-                        <li class="page-scroll">
-                            @Html.ActionLink("Sign Up / Log In", "Login", "Account", new object { }, new { @class = "subNavBtn", @id = "s3" })
-                        </li>
+                            <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
+                                @Html.ActionLink("Sign Up / Log In", "Login", "Account", new object { }, new { @class = "subNavBtn", @id = "s3" })
+                            </li>
                         }
                         else
                         {
-                            <li class="page-scroll">
+                            <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
                                 @Html.ActionLink("Sign out", "LogOff", "Account", new object { }, new { @class = "subNavBtn", @id = "s4" })
                             </li>
                         }
-                        <li class="page-scroll">
+                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
                             @Html.ActionLink("About", "About", "Home", new object { }, new { @class = "subNavBtn", @id = "s4" })
                         </li>
-                        <li class="page-scroll">
+                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
                             @Html.ActionLink("Contact", "Contact", "Home", new object { }, new { @class = "subNavBtn", @id = "s5" })
                         </li>
                     </ul>
