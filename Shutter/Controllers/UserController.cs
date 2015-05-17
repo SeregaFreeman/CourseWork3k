@@ -19,16 +19,7 @@ namespace Shutter.Controllers
         {
                 var users = db.Users.Include(u=>u.Role).ToList();
                 return View(users);                
-        }
-
-        [HttpGet]
-        [Authorize(Roles = "Admin")]
-        public ActionResult Create()
-        {
-            SelectList roles = new SelectList(db.Roles, "Id", "Name");
-            ViewBag.Roles = roles;
-            return View();
-        }
+        }        
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
@@ -67,4 +58,6 @@ namespace Shutter.Controllers
             return RedirectToAction("Index");
         }
     }
+
+        
  }

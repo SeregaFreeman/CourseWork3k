@@ -13,9 +13,9 @@
         <div class="menu">
             <ul style = "list-style: none;">
                 <li>
-                    <a class="hide">Заявки</a>
+                    <a class="hide">посты</a>
                     <ul class="submenu">
-                        <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
+                        <li>@Html.ActionLink("Мои посты", "Index", "Post")</li>
                         <li>@Html.ActionLink("Новая", "Create", "Post")</li>
                     </ul>
                 </li>
@@ -85,9 +85,9 @@
         <div class="menu">
             <ul>
                 <li>
-                    <a class="hide">Заявки</a>
+                    <a class="hide">посты</a>
                     <ul class="submenu">
-                        <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
+                        <li>@Html.ActionLink("Мои посты", "Index", "Post")</li>
                         <li>@Html.ActionLink("Распределить", "Approve", "Post")</li>
                         <li>@Html.ActionLink("Новая", "Create", "Post")</li>
                     </ul>
@@ -103,8 +103,8 @@
         <h2>Приветствую, @ViewContext.HttpContext.User.Identity.Name</h2>
         <div class="menu">
             <ul>
-                <li>@Html.ActionLink("Подать заявку", "Create", "Post")</li>
-                <li>@Html.ActionLink("Мои заявки", "Index", "Post")</li>
+                <li>@Html.ActionLink("Добавить пост", "Create", "Post")</li>
+                <li>@Html.ActionLink("Мои посты", "Index", "Post")</li>
                 <li>@Html.ActionLink("Выйти", "LogOff", "Account")</li>
             </ul>
         </div>

@@ -42,13 +42,13 @@ namespace Shutter.Models
         public User User { get; set; }
         
         // Внешний ключ
-        // ID жизненного цикла заявки - обычное свойство
+        // ID жизненного цикла посты - обычное свойство
         public int LifecycleId { get; set; }
-        // Ссылка на жизненный цикл заявки - Навигационное свойство
+        // Ссылка на жизненный цикл посты - Навигационное свойство
         public Lifecycle Lifecycle { get; set; }
         
     }
-    // Перечисление для статуса заявки
+    // Перечисление для статуса посты
     public enum PostStatus
     {
         Posted = 1,

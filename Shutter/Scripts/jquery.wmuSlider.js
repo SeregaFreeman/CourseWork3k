@@ -1,12 +1,3 @@
-/*!
- * jQuery wmuSlider v2.1
- * 
- * Copyright (c) 2011 Brice Lechatellier
- * http://brice.lechatellier.com/
- *
- * Licensed under the MIT license: http://www.opensource.org/licenses/mit-license.php
- */
-
 ;(function($) {
     
     $.fn.wmuSlider = function(options) {
@@ -101,7 +92,7 @@
             
             /* Navigation Control
             ================================================== */ 
-           if (options.navigationControl) {
+           /*if (options.navigationControl) {
                 var prev = $('<a class="wmuSliderPrev">' + options.previousText + '</a>');
                 prev.click(function(e) {
                     e.preventDefault();
@@ -125,7 +116,7 @@
                     }
                 });                
                 $this.append(next);
-            }
+            }*/
             
 
             /* Pagination Control

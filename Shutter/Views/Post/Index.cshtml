@@ -9,16 +9,10 @@
 
 @section MainContent{
 
-<script type="text/javascript">
-$(document).ready(function(){
-	$('#gallery').gallerie();
-});
-</script>
-
 <div class="main-content">
+
     <div id="gallery" style="padding-left: 115px">
         <p>Всего постов: @(Model.Count<Post>())</p>
-
 
         @foreach (var item in Model)
         {
@@ -36,8 +30,6 @@ $(document).ready(function(){
             //@Html.ActionLink("Удалить", "Delete", new { id = item.Id })
 
         }
-
     </div>
-    </div>
-
+</div>
 }

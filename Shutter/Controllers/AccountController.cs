@@ -80,8 +80,12 @@ namespace Shutter.Controllers
         }
 
         //REGISTER action
+
+        [HttpGet]
         public ActionResult Register()
         {
+            SelectList roles = new SelectList(db.Roles, "Id", "Name");
+            ViewBag.Roles = roles;
             return View();
         }
 

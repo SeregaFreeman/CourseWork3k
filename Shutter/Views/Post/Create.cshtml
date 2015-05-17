@@ -1,7 +1,7 @@
 ﻿@model Shutter.Models.Post
 
 @{
-    ViewBag.Title = "Создать заявку";
+    ViewBag.Title = "Создать пост";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -11,7 +11,7 @@
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Новая пост</legend>
+        <legend>Новый пост</legend>
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
@@ -52,7 +52,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Сохранить заявку" />
+            <input type="submit" value="Сохранить пост" />
         </p>
     </fieldset>
     }
