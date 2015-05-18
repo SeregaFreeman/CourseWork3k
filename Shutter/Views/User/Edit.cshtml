@@ -1,7 +1,7 @@
 ﻿@model Shutter.Models.User
 
 @{
-    ViewBag.Title = "Редактирование пользователя";
+    ViewBag.Title = "User edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -17,41 +17,26 @@
 
             @Html.HiddenFor(model => model.Id)
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Name)
-        </div>
-        <div class="editor-field">
+        
+            @Html.LabelFor(model => model.Name)        
             @Html.EditorFor(model => model.Name)
             @Html.ValidationMessageFor(model => model.Name)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.Login)
-        </div>
-        <div class="editor-field">
+        
+            @Html.LabelFor(model => model.Login)        
             @Html.EditorFor(model => model.Login)
             @Html.ValidationMessageFor(model => model.Login)
-        </div>
 
-        <div class="editor-label">
+        
             @Html.LabelFor(model => model.Password)
-        </div>
-        <div class="editor-field">
             @Html.EditorFor(model => model.Password)
             @Html.ValidationMessageFor(model => model.Password)
-        </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.RoleId)
-        </div>
-        <div class="editor-field">
+        
+            @Html.LabelFor(model => model.RoleId)        
             @Html.DropDownListFor(model => model.RoleId, ViewBag.Roles as SelectList)
             @Html.ValidationMessageFor(model => model.RoleId)
-        </div>
 
-        <p>
-            <input type="submit" value="Сохранить" />
-        </p>
+            <input type="submit" value="Save" />
 
     </fieldset>
     }

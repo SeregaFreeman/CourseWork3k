@@ -10,6 +10,13 @@ ul,
 ol {
     margin: 0;
 }
+
+.register{
+    list-style: none;
+    display: block;
+    height: 50px;
+}
+
 p {
     margin: 0;
 }
@@ -32,6 +39,10 @@ body a {
 .header {
     background: url(../images/bg.png);
     min-height: 80px;
+}
+.post-image{
+    max-height: 240px;
+    max-width: 320px;
 }
 .logo {
     text-align: center;

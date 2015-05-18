@@ -10,7 +10,7 @@ namespace Shutter.Models
     {
         public int Id { get; set; }
         [Required]
-        [Display(Name = "Название категории")]
+        [Display(Name = "Category name")]
         [MaxLength(50, ErrorMessage = "Превышена максимальная длина записи")]
         public string Name { get; set; }
     }

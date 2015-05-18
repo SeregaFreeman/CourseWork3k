@@ -101,37 +101,6 @@ namespace Shutter.Controllers
             return RedirectToAction("Index");
         }
 
-        // загружаем файл TBD
-/*        public ActionResult Upload(int id)
-        {
-            Post r = db.Posts.Find(id);
-            if (r != null)
-            {
-                // Формируем имя для картинки
-                Random rnd = new Random();
-                int imageName = rnd.Next();
-
-                string filename = Server.MapPath("~/Uploads/" + imageName + r.File);
-                string contentType = "image/jpeg";
-
-                string ext = filename.Substring(filename.LastIndexOf('.'));
-                switch (ext)
-                {
-                    case "png":
-                        contentType = "image/png";
-                        break;
-                    case "tiff":
-                        contentType = "image/tiff";
-                        break;
-                    case "jpg":
-                        contentType = "image/jpeg";
-                        break;
-                }
-                return File(filename, contentType, filename);
-            }
-            return Content("Файл не найден");
-        }*/
-
         // действия для модератора
         [HttpGet]
         [Authorize(Roles = "Moderator")]

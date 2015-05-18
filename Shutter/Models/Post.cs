@@ -12,43 +12,44 @@ namespace Shutter.Models
         public int Id { get; set; }
         // Наименование поста
         [Required]
-        [Display(Name = "Название поста")]
+        [Display(Name = "Post name")]
         [MaxLength(50, ErrorMessage = "Превышена максимальная длина записи")]
         public string Name { get; set; }
         // Описание поста
         [Required]
-        [Display(Name = "Описание")]
+        [Display(Name = "Description")]
         [MaxLength(200, ErrorMessage = "Превышена максимальная длина записи")]
         public string Description { get; set; }
         // Комментарий к посту
-        [Display(Name = "Комментарий")]
+        [Display(Name = "Comment")]
         [MaxLength(200, ErrorMessage = "Превышена максимальная длина записи")]
         public string Comment { get; set; }
         // Статус поста
         [Display(Name = "Status")]
         public int Status { get; set; }
         // Файл картинки
-        [Display(Name = "Файл картинки")]
+        [Display(Name = "Picture file")]
         public string File { get; set; }
         
         // Внешний ключ Категория
-        [Display(Name = "Категория")]
+        [Display(Name = "Category")]
         public int? CategoryId { get; set; }
         public Category Category { get; set; }
 
         // Внешний ключ Пользователь
-        [Display(Name = "Пользователь")]
+        [Display(Name = "User")]
         public int? UserId { get; set; }
         public User User { get; set; }
         
         // Внешний ключ
-        // ID жизненного цикла посты - обычное свойство
+        // ID жизненного цикла поста - обычное свойство
         public int LifecycleId { get; set; }
-        // Ссылка на жизненный цикл посты - Навигационное свойство
+        // Ссылка на жизненный цикл поста - Навигационное свойство
         public Lifecycle Lifecycle { get; set; }
         
     }
-    // Перечисление для статуса посты
+
+    // Перечисление для статуса поста
     public enum PostStatus
     {
         Posted = 1,

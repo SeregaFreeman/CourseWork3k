@@ -13,8 +13,7 @@
         <div class="menu">
             <ul class="nav navbar-nav">
                 <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Мои посты", "Index", "Post", new object { }, new { @style = "color: #ffb500" })</li>
-                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Новая", "Create", "Post", new object { }, new { @style = "color: #ffb500" })</li>
-                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Просмотр", "Index", "User", new object { }, new { @style = "color: #ffb500" })</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Новый", "Create", "Post", new object { }, new { @style = "color: #ffb500" })</li>
                 <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Выйти", "LogOff", "Account", new object { }, new { @style = "color: #ffb500" })</li>
             </ul>
         </div>
@@ -71,14 +70,9 @@
         <h2 style="color: gray; padding-left: 10px;">Меню диспетчера</h2>
         <div class="menu">
             <ul class="nav navbar-nav">
-                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
-                    <a class="hide">посты</a>
-                    <ul class="submenu">
-                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Мои посты", "Index", "Post", new object { }, new { @style = "color: #ffb500" })</li>
-                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Распределить", "Approve", "Post", new object { }, new { @style = "color: #ffb500" })</li>
-                        <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Новая", "Create", "Post", new object { }, new { @style = "color: #ffb500" })</li>
-                    </ul>
-                </li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Мои посты", "Index", "Post", new object { }, new { @style = "color: #ffb500" })</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Распределить", "Approve", "Post", new object { }, new { @style = "color: #ffb500" })</li>
+                <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Новый", "Create", "Post", new object { }, new { @style = "color: #ffb500" })</li>
                 <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Пользователи", "Index", "User", new object { }, new { @style = "color: #ffb500" })</li>
                 <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">@Html.ActionLink("Выйти", "LogOff", "Account", new object { }, new { @style = "color: #ffb500" })</li>
             </ul>
