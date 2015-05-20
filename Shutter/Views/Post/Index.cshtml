@@ -2,7 +2,7 @@
 @using Shutter.Models
 
 @{
-    ViewBag.Title = "Список постов";
+    ViewBag.Title = "Posts list";
     int i = 0; //счетчик
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -12,7 +12,7 @@
 <div class="main-content">
 
     <div id="gallery">
-        <h2>Всего постов: @(Model.Count<Post>())</h2>
+        <h2>All posts: @(Model.Count<Post>())</h2>
 
         @foreach (var item in Model)
         {

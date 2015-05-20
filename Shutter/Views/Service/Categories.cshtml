@@ -2,7 +2,7 @@
 @using Shutter.Models
 
 @{
-    ViewBag.Title = "Категории";
+    ViewBag.Title = "Categories";
 }
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,7 +12,7 @@
 {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>Новая категория</legend>
+        <legend>New category</legend>
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
@@ -21,7 +21,7 @@
             @Html.ValidationMessageFor(model => model.Name)
         </div>
         <p>
-            <input type="submit" value="Сохранить" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }

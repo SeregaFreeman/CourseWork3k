@@ -9,7 +9,7 @@
 
 <div class="main-content">
     <div class="contact-form">
-        <h2>Создание нового пользователя</h2>
+        <h2>New user</h2>
 
             @using (Html.BeginForm())
             {
@@ -32,6 +32,11 @@
                             @Html.ValidationMessageFor(model => model.Password)
                         </li>
 
+                        <li class="register">
+                            @Html.EditorFor(model => model.PasswordConfirmation, "password", new { @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Password';}" })
+                            @Html.ValidationMessageFor(model => model.PasswordConfirmation)
+                        </li>
+
                         <li class="register">                            
                             @Html.DropDownListFor(model => model.RoleId, ViewBag.Roles as SelectList)
                             @Html.ValidationMessageFor(model => model.RoleId)
@@ -40,11 +45,8 @@
                         <li class="register">
                             <input type="submit" value="Register" />
                         </li>
-        </ul>
-
-            
-
-    </fieldset>
+                    </ul>
+                </fieldset>
 }
         </div>
     </div>

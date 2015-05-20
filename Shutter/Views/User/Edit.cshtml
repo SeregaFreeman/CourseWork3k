@@ -8,37 +8,40 @@
 @section MainContent{
 
 <div class="main-content">
-    @using (Html.BeginForm())
+    <div class="contact-form">
+@if (ViewContext.HttpContext.User.IsInRole("Admin")) 
+{ 
+    using (Html.BeginForm())
     {
         @Html.ValidationSummary(true)
 
         <fieldset>
-            <legend>Пользователь</legend>
-
-            @Html.HiddenFor(model => model.Id)
-
-        
-            @Html.LabelFor(model => model.Name)        
-            @Html.EditorFor(model => model.Name)
-            @Html.ValidationMessageFor(model => model.Name)
-        
-            @Html.LabelFor(model => model.Login)        
-            @Html.EditorFor(model => model.Login)
-            @Html.ValidationMessageFor(model => model.Login)
-
-        
-            @Html.LabelFor(model => model.Password)
-            @Html.EditorFor(model => model.Password)
-            @Html.ValidationMessageFor(model => model.Password)
-
-        
-            @Html.LabelFor(model => model.RoleId)        
-            @Html.DropDownListFor(model => model.RoleId, ViewBag.Roles as SelectList)
-            @Html.ValidationMessageFor(model => model.RoleId)
-
-            <input type="submit" value="Save" />
-
-    </fieldset>
+            <h3>User</h3>
+            <ul style="padding-left: 0;">
+                
+                <li class="register">                
+                    @Html.EditorFor(model => model.Name, "name", new {@onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Name';}" })
+                    @Html.ValidationMessageFor(model => model.Name)
+                </li>
+                <li class="register">
+                    @Html.EditorFor(model => model.Login, "login", new { @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Login';}" })
+                    @Html.ValidationMessageFor(model => model.Login)
+                </li>
+                <li class="register">
+                    @Html.EditorFor(model => model.Password, "text", new { @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Password';}" })
+                    @Html.ValidationMessageFor(model => model.Password)
+                </li>
+                <li class="register">
+                    @Html.DropDownListFor(model => model.RoleId, ViewBag.Roles as SelectList, new {@class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.RoleId)
+                </li>
+                <li class="register">
+                    <input type="submit" value="Save" />
+                </li>
+            </ul>
+        </fieldset>
     }
+}
 </div>
+    </div>
 }

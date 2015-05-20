@@ -27,11 +27,7 @@
     <div class="header">
         <nav class="subMenu navbar-custom navbar-scroll-top smint" role="navigation">
             <div class="container">
-                <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-main-collapse">
-                        <img src="images/nav-icon.png" title="drop-down-menu">
-                    </button>
-                </div>
+                
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="navbar-collapse navbar-left navbar-main-collapse collapse" style="height: 1px;">
                     <ul class="nav navbar-nav">
@@ -40,7 +36,8 @@
                             @Html.ActionLink("Home", "Index", "Home", new object { }, new { @class = "subNavBtn active", @id = "sTop" })
                         </li>
                         
-                            @if (ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Moderator") || ViewContext.HttpContext.User.IsInRole("User"))
+                            @if (ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Moderator") 
+                                || ViewContext.HttpContext.User.IsInRole("User"))
                             {
                                 <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
                                     @Html.ActionLink("Profile", "Index", "User", new object { }, new { @class = "subNavBtn", @id = "s1" })
@@ -50,7 +47,8 @@
                         <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
                             <a id="s2" class="subNavBtn" href="#">Search</a>
                         </li>
-                        @if (!(ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Moderator") || ViewContext.HttpContext.User.IsInRole("User")))
+                        @if (!(ViewContext.HttpContext.User.IsInRole("Admin") || ViewContext.HttpContext.User.IsInRole("Moderator") 
+                            || ViewContext.HttpContext.User.IsInRole("User")))
                         {
                             <li onmouseover="this.className='active'" onmouseout="this.className='page-scroll'">
                                 @Html.ActionLink("Sign Up / Log In", "Login", "Account", new object { }, new { @class = "subNavBtn", @id = "s3" })

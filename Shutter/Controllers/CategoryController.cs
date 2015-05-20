@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Shutter.Controllers
 {
-    public class ServiceController : Controller
+    public class CategoryController : Controller
     {
         ShutterContext db = new ShutterContext();
 

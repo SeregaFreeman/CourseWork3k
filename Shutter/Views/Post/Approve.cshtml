@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Post>
 @using Shutter.Models
 @{
-    ViewBag.Title = "Список постов";
+    ViewBag.Title = "Posts list";
     int i = 0;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -9,8 +9,8 @@
 @section MainContent{
 <div class="main-content">
 
-    <h2>Список постов</h2>
-    <p>Всего непроверенных постов: @(Model.Count<Post>())</p>
+    <h2>Posts list</h2>
+    <p>All unapproved posts: @(Model.Count<Post>())</p>
     
 
         @foreach (var item in Model)
@@ -39,9 +39,9 @@
                     @Html.DisplayFor(modelItem => item.Name)
                 
                     <div>
-                        <a class="openDialog" data-dialog-id="infoDialog" data-dialog-title="Описание поста"
+                        <a class="openDialog" data-dialog-id="infoDialog" data-dialog-title="Description"
                            href="/Post/Details/@item.Id">
-                            <img src="../../Content/pictures/info.png" class="tdImage" title="Описание поста" />
+                            <img src="../../Content/pictures/info.png" class="tdImage" title="Description" />
                         </a>
                     </div>
             
@@ -53,11 +53,11 @@
                 {
                     @Html.DropDownList("status", new[]
                     {
-                        new SelectListItem() {Text = "Отправлен", Value = "1" },
-                        new SelectListItem() { Text = "Принят", Value = "2" }})
+                        new SelectListItem() {Text = "Sent", Value = "1" },
+                        new SelectListItem() { Text = "Approved", Value = "2" }})
                     }
                 
-                <input type="submit" value="Изменить статус" />
+                <input type="submit" value="Change status" />
             }
     }
     </div>
