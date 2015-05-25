@@ -1,0 +1,47 @@
+﻿@model CW.Models.Post
+
+@{
+    ViewBag.Title = "Create post";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MainContent{
+<div class="main-content">
+    <div class="contact-form">
+        @using (Html.BeginForm("Create", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <h2 style="color: rgb(250, 255, 189) !important;">New post</h2>
+                <ul style="padding-left: 0;">
+                    <li class="register-label"><h3 style="color: rgb(250, 255, 189) !important;">Name</h3></li>
+                    <li class="register">
+                        @Html.EditorFor(model => model.Name, "name", new { @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Name';}" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </li>
+
+                    <li class="register-label"><h3 style="color: rgb(250, 255, 189) !important;">Description</h3></li>
+                    <li class="register">
+                        @Html.EditorFor(model => model.Description, "name", new { @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Name';}" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </li>
+
+                    <li class="register-label"><h3 style="color: rgb(250, 255, 189) !important;">Category</h3></li>
+                    <li class="register">
+                        @Html.DropDownListFor(model => model.CategoryId, ViewBag.Categories as SelectList)
+                        @Html.ValidationMessageFor(model => model.CategoryId)
+                    </li>
+
+                    <li class="register-label"><h3 style="color: rgb(250, 255, 189) !important;">File</h3></li>
+                    <li class="register">
+                        <input type="file" name="picture" />
+                    </li>
+                </ul>
+                <p>
+                    <input type="submit" value="Save" />
+                </p>
+            </fieldset>
+        }
+    </div>
+    </div>
+}

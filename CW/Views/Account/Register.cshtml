@@ -1,0 +1,43 @@
+﻿@model CW.Models.User
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section MainContent{
+    <div class="main-content">
+        <div class="contact-form">
+            <h2 style="color: #FEB400 !important;">New user</h2>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                <fieldset>
+                    <ul style="padding-left: 0">
+                        <li class="register-label"><h3 style="color: rgb(250, 255, 189) !important;">Name</h3></li>
+                        <li class="register">
+                            @Html.EditorFor(model => model.Name, "name", new { @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Name';}" })
+                            @Html.ValidationMessageFor(model => model.Name)
+                        </li>
+
+                        <li class="register-label"><h3 style="color: rgb(250, 255, 189) !important;">Login</h3></li>
+                        <li class="register">
+                            @Html.EditorFor(model => model.Login, "login", new { @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Login';}" })
+                            @Html.ValidationMessageFor(model => model.Login)
+                        </li>
+
+                        <li class="register-label"><h3 style="color: rgb(250, 255, 189) !important;">Password</h3></li>
+                        <li class="register">
+                            @Html.EditorFor(model => model.Password, "password", new { @onfocus = "this.value = '';", @onblur = "if (this.value == '') {this.value = 'Password';}" })
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </li>
+
+                        <li class="register">
+                            <input type="submit" value="Register" />
+                        </li>
+                    </ul>
+                </fieldset>
+            }
+
+        </div>
+    </div>
+
+}

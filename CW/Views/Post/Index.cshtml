@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Post>
+@using CW.Models
+
+@{
+    ViewBag.Title = "Posts list";
+    int i = 0; //счетчик
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section MainContent{
+
+<div class="main-content">
+
+    <div id="gallery">
+        <h2>All posts: @(Model.Count<Post>())</h2>
+
+        @foreach (var item in Model)
+        {
+            i++;
+
+            if (item.Status ==(int)PostStatus.Approved && item.File != null)
+            {
+                <a  href="~/Uploads/@item.File"><img class="post-image" src="~/Uploads/@item.File" /></a>
+            }
+            else
+            {
+                <img src="../../Content/pictures/filen.png" alt="без файла изображения" class="tdImage" />
+            }
+
+            //@Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+
+        }
+    </div>
+</div>
+}
